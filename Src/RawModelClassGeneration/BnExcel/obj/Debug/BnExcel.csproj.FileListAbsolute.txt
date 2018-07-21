@@ -1,0 +1,11 @@
+D:\2017B-TBID\trunk\src\TBID\BnExcel\bin\Debug\BnExcel.dll
+D:\2017B-TBID\trunk\src\TBID\BnExcel\bin\Debug\BnExcel.pdb
+D:\2017B-TBID\trunk\src\TBID\BnExcel\obj\Debug\BnExcel.csprojResolveAssemblyReference.cache
+D:\2017B-TBID\trunk\src\TBID\BnExcel\obj\Debug\BnExcel.dll
+D:\2017B-TBID\trunk\src\TBID\BnExcel\obj\Debug\BnExcel.pdb
+D:\DnA\DnA\BnExcel\bin\Debug\BnExcel.dll
+D:\DnA\DnA\BnExcel\bin\Debug\BnExcel.pdb
+D:\DnA\DnA\BnExcel\obj\Debug\BnExcel.csprojResolveAssemblyReference.cache
+D:\DnA\DnA\BnExcel\obj\Debug\BnExcel.csproj.CoreCompileInputs.cache
+D:\DnA\DnA\BnExcel\obj\Debug\BnExcel.dll
+D:\DnA\DnA\BnExcel\obj\Debug\BnExcel.pdb

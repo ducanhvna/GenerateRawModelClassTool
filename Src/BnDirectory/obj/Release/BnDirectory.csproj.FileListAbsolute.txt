@@ -1,0 +1,5 @@
+D:\2017B-TBID\trunk\src\TBID\BnDirectory\bin\Release\BnDirectory.xml
+D:\2017B-TBID\trunk\src\TBID\BnDirectory\bin\Release\BnDirectory.dll
+D:\2017B-TBID\trunk\src\TBID\BnDirectory\bin\Release\BnDirectory.pdb
+D:\2017B-TBID\trunk\src\TBID\BnDirectory\obj\Release\BnDirectory.dll
+D:\2017B-TBID\trunk\src\TBID\BnDirectory\obj\Release\BnDirectory.pdb

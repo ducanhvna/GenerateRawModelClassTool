@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BnProcessLog</name>
+    </assembly>
+    <members>
+        <member name="T:Toshiba.BN.SystemBase.Log.ProcessTracer">
+            ----------------------------------------------------------------------------------------------------------------
+            <summary>
+            ProcessTracer class
+            </summary>
+            <remarks>
+            Provide methods to write/delete log file
+            </remarks>
+            ----------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.#ctor(System.String,System.String,Toshiba.BN.SystemBase.Log.Level,System.Int32,System.Int32,Toshiba.BN.SystemBase.Log.ExceptionHandling)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■ProcessTracer (constructor)
+            </summary>
+            <param name="savePath">         (I) folder name to save log file </param>
+            <param name="fileName">         (I) log file name </param>
+            <param name="logLevel">         (I) log level setting </param>
+            <param name="maxLength">        (I) maximum length of string for each writting </param>
+            <param name="keepDays">         (I) maximum retain log files when delete </param>
+            <param name="exceptionHandling">(I) throw exception handling option </param>
+            <returns></returns>
+            <remarks></remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-07  (TSDV)hung.trinhhong  Update after new specification
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.DeleteBackupOverFile">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■DeleteBackupOverFile (Delete log files and retain specified number of log files)
+            </summary>
+            <remarks>
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-07  (TSDV)hung.trinhhong  Update Specification change
+            Ver.01.01.00.001  2013-06-11  (TSDV)hung.trinhhong  Update Bug when create system semaphore
+            Ver.01.01.00.002  2013-06-12  (TSDV)hung.trinhhong  Update Confirm rule for naming semaphore
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.WriteLine(Toshiba.BN.SystemBase.Log.Assortment,Toshiba.BN.SystemBase.Log.Level,System.String)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■WriteLine (Write log string into log file)
+            </summary>
+            <param name="LogAssorment"> (I) log assorment </param>
+            <param name="LogLevel">     (I) log level </param>
+            <param name="LogString">    (I) log string </param>
+            <exception> 
+            Exception cause by System.IO.StreamWrite.WriteLine() method
+            </exception>
+            <remarks>
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-07  (TSDV)hung.trinhhong  Update Specification changed
+            Ver.01.01.00.001  2013-06-10  (TSDV)hung.trinhhong  Fix bug when create semaphore 
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.Close">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Close (Close the log file, release file stream and streamwriter)
+            </summary>
+            <param></param>
+            <returns></returns>
+            <exception> 
+            Exception cause by System.IO.File.Close() method
+            </exception>
+            <remarks>
+            Use Close() and Flush() method of TextFileAccessor class
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-11  (TSDV)hung.trinhhong  Update Specification change
+            Ver.01.01.00.001  2013-12-11  (TSA)Yuichi.Sekiya    Update Move a method in public
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.Open">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Open (Open log file. 1 log file per date)
+            </summary>
+            <exception> 
+            </exception>
+            <remarks>
+            If file is not opening, m_LogFile is null -> open new log file
+            Other hand, 
+            if current date same m_FileOpenningDate, do nothing. 
+            if current date different with m_FileOpenningDate, close opening log file and new log file should be created 
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-07  (TSDV)hung.trinhhong  Update  Change specification
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer.CreateSemaphore(System.String)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■CreateSemaphore (Create an instance system semaphore)
+            </summary>
+            <param name="SemaphoreName"> (I) named semaphore </param>
+            <returns>
+            Refer to instance of system semaphore
+            </returns>
+            <exception> 
+            Exception occur by System.Threading.Semaphore.Semaphore(int,int,string) constructor
+            </exception>
+            <remarks>
+            Instance system semaphore by using constructor Semaphore().
+            Try it in 3 times if can not create new semaphore
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-04-11  (TSDV)hung.trinhhong  Create
+            Ver.01.01.00.000  2013-06-07  (TSDV)hung.trinhhong  Update as new specification
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer._Open">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="M:Toshiba.BN.SystemBase.Log.ProcessTracer._Close">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.KeepDays">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.LogLevel">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.MaxLength">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.SavePath">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.Semaphore">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.SystemBase.Log.ProcessTracer.FileName">
+            <summary>
+            test property
+            </summary>
+        </member>
+        <member name="T:Toshiba.BN.SystemBase.Log.Level">
+            <summary>
+            Log level
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.NotWrite">
+            <summary>
+            Do not write log message to log file 
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.ErrorOrImportant">
+            <summary>
+            The information of error and important  event, must write in log file
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.ImportantInOut">
+            <summary>
+            Start point of process, end point of process, start point of thread, end point of thread, 
+            state transition, start point of important method, end point important method
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.AttentionInOut">
+            <summary>
+            Point of "if" or "switch", start point of method, end point of method
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.Parameter">
+            <summary>
+            The information of parameter
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.Performance">
+            <summary>
+            The information for performance. It is unnecessary at the time of the customer use
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Level.Debug">
+            <summary>
+            The information for debug. It is unnecessary at the time of the customer use
+            </summary>
+        </member>
+        <member name="T:Toshiba.BN.SystemBase.Log.Assortment">
+            <summary>
+            Log assorment
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.None">
+            <summary>
+            None Assortment
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.OperationLog">
+            <summary>
+            The information of user operation
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.CommunicationLog">
+            <summary>
+            The information of communication
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.DBAccessLog">
+            <summary>
+            The information of access to database
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.DBRecoveryLog">
+            <summary>
+            The information of database recovery
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.ErrorLog">
+            <summary>
+            The information of error
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.ApplicationLog">
+            <summary>
+            Application Log
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.Assortment.ReportLog">
+            <summary>
+            The information of report process
+            </summary>
+        </member>
+        <member name="T:Toshiba.BN.SystemBase.Log.ExceptionHandling">
+            <summary>
+            Throw exception option
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.ExceptionHandling.NotThrow">
+            <summary>
+            Skip exception
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.SystemBase.Log.ExceptionHandling.Throw">
+            <summary>
+            Throw exception
+            </summary>
+        </member>
+    </members>
+</doc>

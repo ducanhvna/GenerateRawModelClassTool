@@ -19,3 +19,9 @@ D:\TBID\TBID-ModelfileGeneration\BnExcel\obj\Debug\BnExcel.csprojResolveAssembly
 D:\TBID\TBID-ModelfileGeneration\BnExcel\obj\Debug\BnExcel.csproj.CoreCompileInputs.cache
 D:\TBID\TBID-ModelfileGeneration\BnExcel\obj\Debug\BnExcel.dll
 D:\TBID\TBID-ModelfileGeneration\BnExcel\obj\Debug\BnExcel.pdb
+D:\GenerateRawModelClassTool\Src\BnExcel\bin\Debug\BnExcel.dll
+D:\GenerateRawModelClassTool\Src\BnExcel\bin\Debug\BnExcel.pdb
+D:\GenerateRawModelClassTool\Src\BnExcel\obj\Debug\BnExcel.csprojAssemblyReference.cache
+D:\GenerateRawModelClassTool\Src\BnExcel\obj\Debug\BnExcel.csproj.CoreCompileInputs.cache
+D:\GenerateRawModelClassTool\Src\BnExcel\obj\Debug\BnExcel.dll
+D:\GenerateRawModelClassTool\Src\BnExcel\obj\Debug\BnExcel.pdb

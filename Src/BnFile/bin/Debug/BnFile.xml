@@ -1,0 +1,600 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BnFile</name>
+    </assembly>
+    <members>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor">
+            ----------------------------------------------------------------------------------------------------------------
+            <summary>
+            BinaryFileAccessor class
+            </summary>
+            <remarks>
+            Provide methods to access binary file
+            </remarks>
+            ----------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.m_BinaryRW">
+            <summary>
+            Reference to FileStream instance
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.m_length">
+            <summary>
+            Size of binary file
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Length">
+            <summary>
+            Get length of FileStream property
+            </summary>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.#ctor">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■BinaryFileAccessor(constructor)
+            </summary>
+            <param></param>
+            <returns></returns>
+            <remarks>
+            This function do nothing, instance an object with default attributes
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Close">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Close (file close)
+            </summary>
+            <param></param>
+            <returns></returns>
+            <exception></exception>
+            <remarks>
+            Wrapper function System.IO.FileStream.Close()
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Open(System.String,Toshiba.BN.DataAccess.FileAccess.FileAccessMode)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Open (file open)
+            </summary>
+            <param name="path"> (I) path file string </param>
+            <param name="mode"> (I) file access mode </param>
+            <returns> </returns>
+            <exception> 
+            Exception of System.IO.FileStream(string, FileMode)
+            </exception>
+            <remarks>
+            Open exist file for reading or append writing. 
+            If file is not exist when writing, new file is created.
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            Ver.01.00.00.001  2013-12-03  (TSA)Yuichi.Sekiya    Update Add RandomWriteMode
+            Ver.01.00.00.002  2014-04-18  (TJ)Yoshinori.Ando    Update prismy:92 ReadModeに、読取アクセスを指定　
+            Ver.01.00.00.004  2014-05-07  (TJ)Yoshinori.Ando    Update prismy:92 ReadModeに、読取用または書込用でのオープン許可を指定　
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Read(System.Byte[],System.Int32)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Read (specified bytes from binary file)
+            </summary>
+            <param name="array"> (O) array to read data </param>
+            <param name="count"> (I) number bytes request to read </param>
+            <returns> 
+            Return               (O) actual read bytes
+            </returns>
+            <exception> 
+            Exception of System.IO.FileStream.Read(byte[], int, int)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.FileStream.Read(array,offset,count) with offset = 0.
+            Read count bytes to array buffer. Return actual read bytes
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Seek(System.Int32,Toshiba.BN.DataAccess.FileAccess.SeekPoint)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Seek (Sets the current position of this stream to the given value.)
+            </summary>
+            <param name="offset"> (I) The point relative to origin from which to begin seeking </param>
+            <param name="origin"> (I) Specifies the beginning, the end, or the current position as a reference point for origin </param>
+            <returns> 
+            Return                (O) the new position in the stream
+            </returns>
+            <exception> 
+            Exception of System.IO.FileStream.Seek(long, SeekOrigin)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.FileStream.Seek(long, SeekOrigin)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.Write(System.Byte[],System.Int32)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■Write (specified bytes to binary file)
+            </summary>
+            <param name="array"> (I) array to write data </param>
+            <param name="count"> (I) number bytes request to write </param>
+            <returns> </returns>
+            <exception> 
+            Exception of System.IO.FileStream.Write(byte[], int, int)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.FileStream.Write(array,offset,count) with offset = 0.
+            Write count bytes from current FileStream position.
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■ReadAsync(非同期読込処理)
+            </summary>
+            <param name="array">             (I) 読込データ</param>
+            <param name="offset"> 　         (I) 読込開始位置 </param>
+            <param name="count">             (I) 読込バイト数 </param>
+            <param name="cancellationToken"> (I) キャンセル要求鵜監視トークン </param>
+            <returns> </returns>
+            <exception> 
+            ArgumentNullException        bufferが null
+            ArgumentOutOfRangeException　offset または count が負の値の場合
+            ArgumentException          　offset と count の合計値が、バッファー長より大きい場合
+            NotSupportedException　　　　ストリームが読み取りをサポートしていない場合
+            ObjectDisposedException      ストリームが破棄されている場合。
+            InvalidOperationException    ストリームが現在、前の読み取り操作で使用中の場合
+            OperationCanceledException   キャンセル要求が発生した場合
+            </exception>
+            <remarks>
+            読込処理を非同期で実行する
+            </remarks>
+            <history>        
+            Ver.01.00.00.003  2014-04-18  (TJ)Takayuki.Okabe    Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.BinaryFileAccessor.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            ------------------------------------------------------------------------------------------------------------
+            <summary>
+            ■WriteAsync(非同期書込み処理)
+            </summary>
+            <param name="array">             (I) 書込データ</param>
+            <param name="offset"> 　         (I) 書込開始位置 </param>
+            <param name="count">             (I) 書込バイト数 </param>
+            <param name="cancellationToken"> (I) キャンセル要求鵜監視トークン </param>
+            <returns> </returns>
+            <exception> 
+            ArgumentNullException        bufferが null
+            ArgumentOutOfRangeException　offset または count が負の値の場合
+            ArgumentException          　offset と count の合計値が、バッファー長より大きい場合
+            NotSupportedException　　　　ストリームが書き込みをサポートしていない場合(OPEN時のモード異常)
+            ObjectDisposedException      ストリームが破棄されている場合。
+            InvalidOperationException    ストリームが現在、前の書き込み操作で使用中の場合
+            OperationCanceledException   キャンセル要求が発生した場合
+            </exception>
+            <remarks>
+            書込み処理を非同期で実行する
+            </remarks>
+            <history>
+            Ver.01.00.00.003  2014-04-18  (TJ)Takayuki.Okabe    Create
+            </history>
+            ------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.SeekPoint">
+            <summary>
+            SeekPoint enumeration base on System.IO.SeekOrigin
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.SeekPoint.Begin">
+            <summary>
+            Specifies the beginning of a stream.
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.SeekPoint.Current">
+            <summary>
+            Specifies the current position within a stream.
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.SeekPoint.End">
+            <summary>
+            Specifies the end of a stream.
+            </summary>
+        </member>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.FileOperator">
+            ----------------------------------------------------------------------------------------------------------------
+            <summary>
+            FileOperator class
+            </summary>
+            <remarks>
+            Provide methods to operate file
+            </remarks>
+            ----------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.FileOperator.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies an existing file to a new file. Overwriting a file of the same name is allowed.
+            </summary>
+            <param name="sourceFileName"> (I) The file to copy </param>
+            <param name="destFileName">   (I) The name of the destination file. This cannot be a directory </param>
+            <param name="overwrite">      (I) true if the destination file can be overwritten; otherwise, false </param>
+            <returns></returns>
+            <exception> 
+            Exception of System.IO.File.Copy();
+            </exception>
+            <remarks>
+            Wrapper function System.IO.File.Copy(string,string,bool)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.FileOperator.Delete(System.String)">
+            <summary>
+            Deletes the specified file. 
+            </summary>
+            <param name="path"> (I) The name of the file to be deleted. Wildcard characters are not supported </param>
+            <returns></returns>
+            <exception> 
+            Exception of System.IO.File.Delete(string);
+            </exception>
+            <remarks>
+            Wrapper function System.IO.File.Delete(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.FileOperator.Exists(System.String)">
+            <summary>
+            Determines whether the specified file exists.
+            </summary>
+            <param name="path"> (I) The file to check </param>
+            <returns></returns>
+            <exception> </exception>
+            <remarks>
+            Wrapper function System.IO.File.Exists(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.FileOperator.GetLastWriteTime(System.String)">
+            <summary>
+            Returns the date and time the specified file or directory was last written to.
+            </summary>
+            <param name="path"> (I) The file or directory for which to obtain write date and time information </param>
+            <returns></returns>
+            <exception> 
+            Exception of System.IO.File.GetLastWriteTime(string);
+            </exception>
+            <remarks>
+            Wrapper function System.IO.File.GetLastWriteTime(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.FileOperator.Move(System.String,System.String,System.Boolean)">
+            <summary>
+            Moves a specified file to a new location.
+            </summary>
+            <param name="sourceFileName"> (I) The name of the file to move </param>
+            <param name="destFileName">   (I) The new path for the file </param>
+            <param name="overwrite">      (I) true if the destination file exist; otherwise, false </param>
+            <returns></returns>
+            <exception> 
+            Exception of System.IO.File.Move(string,string) and Replace(string,string,string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.File.Move(string,string) and Replace(string,string,string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.PathEditor">
+            ----------------------------------------------------------------------------------------------------------------
+            <summary>
+            PathEditor class
+            </summary>
+            <remarks>
+            Provide methods to get/set path file name
+            </remarks>
+            ----------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.ChangeExtension(System.String,System.String)">
+            <summary>
+            Changes the extension of a path string.
+            </summary>
+            <param name="path">      (I) The path information to modify </param>
+            <param name="extension"> (I) The new extension.Specify null to remove an existing extension from path </param>
+            <returns>
+            return                   (O) The modified path information.
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.ChangeExtension(string,string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.ChangeExtension(string,string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.Combine(System.String,System.String)">
+            <summary>
+            Combines two strings into a path.
+            </summary>
+            <param name="path1"> (I) The first path to combine  </param>
+            <param name="path2"> (I) The second path to combine </param>
+            <returns>
+            return                   (O) The combined paths.
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.Combine(string,string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.Combine(string,string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.GetDirectoryName(System.String)">
+            <summary>
+            Returns the directory information for the specified path string.
+            </summary>
+            <param name="path">     (I) The path of a file or directory </param>
+            <returns>
+            return                  (O) Directory information for path.
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.GetDirectoryName(string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.GetDirectoryName(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.GetExtension(System.String)">
+            <summary>
+            Returns the extension of the specified path string.
+            </summary>
+            <param name="path"> (I) The path string from which to get the extension </param>
+            <returns>
+            return              (O) The extension of the specified path (including the period "."), or null, or String.Empty
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.GetExtension(string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.GetExtension(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.GetFileName(System.String)">
+            <summary>
+            Returns the file name and extension of the specified path string.
+            </summary>
+            <param name="path">     (I) The path string from which to obtain the file name and extension.</param>
+            <returns>
+            return                  (O) The characters after the last directory character in path.
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.GetFileName(string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.GetFileName(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.PathEditor.GetFileNameWithoutExtension(System.String)">
+            <summary>
+            Returns the file name of the specified path string without the extension.
+            </summary>
+            <param name="path"> (I) The path of the file </param>
+            <returns>
+            return    (O) The string returned by GetFileName, minus the last period (.) and all characters following it.
+            </returns>
+            <exception> 
+            Exception of System.IO.Path.GetFileNameWithoutExtension(string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.Path.GetFileNameWithoutExtension(string)
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor">
+            ----------------------------------------------------------------------------------------------------------------
+            <summary>
+            TextFileAccessor class
+            </summary>
+            <remarks>
+            Provide methods to access text file
+            </remarks>
+            ----------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.m_Eof">
+            <summary>
+            Indicates whether the current stream position is at the end of the stream.
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.m_TextRW">
+            <summary>
+            Reference to an instance of FileStream
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.m_TextReader">
+            <summary>
+            Reference to an instance StreamReader
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.m_TextWriter">
+            <summary>
+            Reference to an instance StreamWriter
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.EOF">
+            <summary>
+            Get value indicates whether the current stream position is at the end of the stream.
+            </summary>
+        </member>
+        <member name="P:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.AutoFlush">
+            <summary>
+            AutoFlush option for StreamWriter
+            </summary>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.#ctor">
+            <summary>
+             TextFileAccessor() constructor
+            </summary>
+            <param></param>
+            <returns></returns>
+            <remarks>
+            This function do nothing, instance an object with default attributes
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.Close">
+            <summary>
+            Close file.
+            </summary>
+            <param></param>
+            <returns></returns>
+            <exception></exception>
+            <remarks>
+            Close the FileStream, StreamReader and StreamWriter objects and 
+            release any system resource associated with.
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.Flush">
+            <summary>
+            Clear StreamWriter buffer.
+            </summary>
+            <param></param>
+            <returns></returns>
+            <exception>
+            Exception of System.IO.StreamWriter.Flush()
+            </exception>
+            <remarks>
+            Wrapper function System.IO.StreamWriter.Flush(). Clear all buffer of current writer.
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.Open(System.String,Toshiba.BN.DataAccess.FileAccess.FileAccessMode)">
+            <summary>
+            Open file.
+            </summary>
+            <param name="path"> (I) path file name string </param>
+            <param name="mode"> (I) file access mode </param>
+            <returns></returns>
+            <exception>
+            Exception of System.IO.FileStream(string, FileMode)
+            Exception of System.IO.StreamReader(FileStream)
+            Exception of System.IO.StreamWriter(FileStream)
+            </exception>
+            <remarks>
+            Instance FileStream
+            Instance StreamReader for reading if mode = ReadMode
+            Instance StreamWriter for writing if mode = WriteMode
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            Ver.01.00.00.001  2013-06-17  (TSDV)binh.nguyenthanh  Modify to encoding Japanese in ".csv" file
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.WriteLine(System.String)">
+            <summary>
+            Write string into end of text file.
+            </summary>
+            <param name="value"> (I) input string </param>
+            <returns></returns>
+            <exception>
+            Exception of System.IO.StreamWrite.WriteLine(string)
+            </exception>
+            <remarks>
+            Wrapper function System.IO.StreamWriter.WriteLine(). 
+            Writes a string followed by a line terminator to the text string or stream. 
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="M:Toshiba.BN.DataAccess.FileAccess.TextFileAccessor.ReadLine">
+            <summary>
+            Read a line at current from text file.
+            </summary>
+            <param></param>
+            <returns>
+            /// return  (O) read string
+            </returns>
+            <exception>
+            Exception of System.IO.StreamReader.ReadLine()
+            </exception>
+            <remarks>
+            Wrapper function System.IO.StreamReader.ReadLine(). 
+            Reads a line of characters from the current stream and returns the data as a string. 
+            </remarks>
+            <history>
+            Ver.01.00.00.000  2013-06-05  (TSDV)hung.trinhhong  Create
+            </history>
+        </member>
+        <member name="T:Toshiba.BN.DataAccess.FileAccess.FileAccessMode">
+            <summary>
+            File access mode enumeration
+            </summary>
+            Ver.01.00.00.001  2013-12-03  (TSA)Yuichi.Sekiya    Update Add RandomWriteMode
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.FileAccessMode.ReadMode">
+            <summary>
+            Read access to file. Data can be read from the file.
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.FileAccessMode.WriteMode">
+            <summary>
+            Write access to the file. Data can be written to the file.
+            </summary>
+        </member>
+        <member name="F:Toshiba.BN.DataAccess.FileAccess.FileAccessMode.RandomWriteMode">
+            <summary>
+            Write access to the file. Data can be random written to the file.
+            This mode is BinaryAccess only.
+            </summary>
+        </member>
+    </members>
+</doc>

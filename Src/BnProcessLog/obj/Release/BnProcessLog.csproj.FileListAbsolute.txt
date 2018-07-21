@@ -1,0 +1,12 @@
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnProcessLog.xml
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnProcessLog.dll
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnProcessLog.pdb
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnDirectory.dll
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnFile.dll
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnDirectory.pdb
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnDirectory.xml
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnFile.pdb
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\bin\Release\BnFile.xml
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\obj\Release\BnProcessLog.csprojResolveAssemblyReference.cache
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\obj\Release\BnProcessLog.dll
+D:\2017B-TBID\trunk\src\TBID\BnProcessLog\obj\Release\BnProcessLog.pdb
